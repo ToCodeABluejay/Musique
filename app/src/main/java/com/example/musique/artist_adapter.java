@@ -2,11 +2,18 @@ package com.example.musique;
 import static androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import android.content.Context;
-//import android.databinding.DataBindingUtil;
-//import android.support.v7.widget.RecyclerView;
-import androidx.recyclerview.*;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.musique.R;
+import com.example.musique.ui.artists.ArtistsFragment;
+
+import java.io.File;
 
 public class artist_adapter extends RecyclerView.Adapter<artist_adapter.ViewHolder> {
 
@@ -46,7 +53,7 @@ public class artist_adapter extends RecyclerView.Adapter<artist_adapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        viewHolder.getTextView().setText(localDataSet[position]);
+        viewHolder.getTextView().setText();
     }
 
     @Override
