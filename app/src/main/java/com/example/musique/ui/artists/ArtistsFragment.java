@@ -16,7 +16,7 @@ import com.example.musique.R;
 
 public class ArtistsFragment extends Fragment {
 
-    private ArtistViewModel mViewModel;
+    private ArtistsView mViewModel;
 
     public static ArtistsFragment newInstance() {
         return new ArtistsFragment();
@@ -25,8 +25,11 @@ public class ArtistsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ArtistViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(ArtistsView.class);
         // TODO: Use the ViewModel
+        String[] pathnames;
+        //MediaMetadataRetriever metaRetriver = new MediaMetadataRetriever();
+
     }
 
     @Nullable

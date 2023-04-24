@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Musique</string>
+    <string name="app_name">Music</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Music</string>
@@ -7,8 +7,8 @@
     <string name="nav_header_desc">Listen to music</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_player">Player</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
     <string name="menu_artists">Artists</string>
-    <string name="menu_albums">Albums</string>
-    <string name="menu_songs">Songs</string>
 </resources>

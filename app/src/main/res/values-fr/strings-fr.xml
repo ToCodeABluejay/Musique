@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_fr">Musique</string>
+    <string name="navigation_drawer_open_fr">Open navigation drawer</string>
+    <string name="navigation_drawer_close_fr">Close navigation drawer</string>
+    <string name="nav_header_title_fr">Musique</string>
+    <string name="nav_header_subtitle_fr">android.studio@android.com</string>
+    <string name="nav_header_desc_fr">Écoutez de la musique</string>
+    <string name="action_settings_fr">Settings</string>
+
+    <string name="menu_artists_fr">Les Artistes</string>
+</resources>
