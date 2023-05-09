@@ -10,7 +10,9 @@ import android.content.ContentUris;
 
 public class Library {
     HashMap<String, Artist> artists;
+    ArrayList<Artist> artists_l;
     HashMap<String, Album> albums;
+    ArrayList<Album> albums_l;
     ArrayList<Song> songs;
     Song current;
 
@@ -43,7 +45,8 @@ public class Library {
                         ArrayList<Song> k = new ArrayList<Song>();
                         k.add(s);
                         a = new Album(s.getAlbum(), k);
-                        albums.put(s.getAlbum(), new Album(s.getAlbum(), k));
+                        albums.put(s.getAlbum(), (a=new Album(s.getAlbum(), k)));
+                        albums_l.add(a);
                     }
                     else {
                         a.songs.add(s);
@@ -51,7 +54,8 @@ public class Library {
                     if ((b=artists.get(s.getArtist()))==null) {
                         ArrayList<Album> k = new ArrayList<Album>();
                         k.add(a);
-                        artists.put(s.getArtist(), new Artist(s.getArtist(), k));
+                        artists.put(s.getArtist(), (b=new Artist(s.getArtist(), k)));
+                        artists_l.add(b);
                     }
                     else if (!b.albums.contains(a)) {
                         b.albums.add(a);
@@ -61,12 +65,12 @@ public class Library {
             cursor.close();
         }
     }
-    public HashMap<String, Artist> getArtists() {
-        return artists;
+    public ArrayList<Artist> getArtists() {
+        return artists_l;
     }
 
-    public HashMap<String, Album> getAlbums() {
-        return albums;
+    public ArrayList<Album> getAlbums() {
+        return albums_l;
     }
 
     public ArrayList<Song> getSongs() {

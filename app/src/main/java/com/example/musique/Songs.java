@@ -57,16 +57,17 @@ public class Songs extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        RecyclerView view = getView().findViewById(R.id.rc_songs);
-        SongAdapter sa = new SongAdapter(getActivity(), MainActivity.library.getSongs());
-        view.setAdapter(sa);
-        view.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_songs, container, false);
+        View view = inflater.inflate(R.layout.fragment_songs, container, false);
+        RecyclerView rcview = view.findViewById(R.id.rc_songs);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
+        SongAdapter sa = new SongAdapter(view.getContext(), MainActivity.library.getSongs());
+        rcview.setAdapter(sa);
+        return view;
     }
 }

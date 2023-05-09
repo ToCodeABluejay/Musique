@@ -10,4 +10,12 @@ public class Artist {
         this.name = name;
         this.albums = albums;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Album> getAlbums() {
+        return albums;
+    }
 }

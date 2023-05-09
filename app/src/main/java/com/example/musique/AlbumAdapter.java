@@ -1,46 +1,43 @@
 package com.example.musique;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import android.content.Context;
-
-import java.util.ArrayList;
-
-import android.view.LayoutInflater;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class SongAdapter extends RecyclerView.Adapter<SongAdapter.Holder> {
+import java.util.ArrayList;
+
+public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.Holder> {
     Context context;
-    ArrayList<Song> songs;
+    ArrayList<Album> albums;
 
 
-    SongAdapter(Context context, ArrayList<Song> songs) {
+    AlbumAdapter(Context context, ArrayList<Album> albums) {
         this.context = context;
-        this.songs = songs;
+        this.albums = albums;
     }
 
     @NonNull
     @Override
-    public SongAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AlbumAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.card_song, parent, false);
-        return new SongAdapter.Holder(view);
+        return new AlbumAdapter.Holder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SongAdapter.Holder holder, int position) {
-        holder.name.setText(songs.get(position).getName());
+    public void onBindViewHolder(@NonNull AlbumAdapter.Holder holder, int position) {
+        holder.name.setText(albums.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return songs.size();
+        return albums.size();
     }
 
     public static class Holder extends RecyclerView.ViewHolder {

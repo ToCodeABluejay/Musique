@@ -3,6 +3,9 @@ package com.example.musique;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,6 +62,11 @@ public class Artists extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_artists, container, false);
+        View view = inflater.inflate(R.layout.fragment_artists, container, false);
+        RecyclerView rcview = view.findViewById(R.id.rc_artists);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
+        ArtistAdapter sa = new ArtistAdapter(view.getContext(), MainActivity.library.getArtists());
+        rcview.setAdapter(sa);
+        return view;
     }
 }
