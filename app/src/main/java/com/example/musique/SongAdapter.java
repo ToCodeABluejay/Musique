@@ -23,7 +23,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.Holder> {
 
     SongAdapter(Context context, ArrayList<Song> songs, Interface inter) {
         this.context = context;
-        this.songs = songs;
+        SongAdapter.songs = songs;
         this.inter = inter;
     }
 

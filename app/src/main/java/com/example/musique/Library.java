@@ -2,6 +2,7 @@ package com.example.musique;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import android.util.Log;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.database.Cursor;
@@ -18,7 +19,7 @@ public class Library {
     int count;
 
     Library(Activity activity) {
-        Uri allsongsuri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+        Uri allsongsuri = MediaStore.Audio.Media.INTERNAL_CONTENT_URI;
         String selection = MediaStore.Audio.Media.IS_MUSIC + " != 0";
         Cursor cursor = activity.managedQuery(allsongsuri, null, selection, null, null);
         this.artists = new HashMap<String, Artist>();
@@ -26,6 +27,7 @@ public class Library {
         this.songs = new ArrayList<Song>();
 
         count = cursor.getCount();
+        Log.d("Library", String.valueOf(count));
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {
@@ -35,12 +37,12 @@ public class Library {
                     String name = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DISPLAY_NAME));
                     String path = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA));
                     Long id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM_ID));
-                    Uri cover_art = Uri.parse("content://media/external/audio/albumart");
+                    Uri cover_art = Uri.parse("content://media/internal/audio/albumart");
                     Uri image = ContentUris.withAppendedId(cover_art, id);
 
                     s = new Song(artist, album, name, path, image);
                     songs.add(s);
-
+                    Log.d("Library", artist);
                     Album a;
                     Artist b;
                     if ((a=albums.get(s.getAlbum()))==null) {
@@ -67,6 +69,7 @@ public class Library {
             }
             cursor.close();
         }
+        Log.d("Library", "Done!");
         MainActivity.initPlayer();
     }
     public HashMap<String, Artist> getArtists() {

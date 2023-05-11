@@ -67,7 +67,7 @@ public class Player extends Fragment {
         FloatingActionButton play;
         Button prev, next;
         play = view.findViewById(R.id.play);
-        this.cover = view.findViewById(R.id.p_cover);
+        cover = view.findViewById(R.id.p_cover);
         play.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v) {
