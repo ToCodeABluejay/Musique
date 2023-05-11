@@ -3,20 +3,17 @@ package com.example.musique;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
-import android.app.ActionBar;
+import android.widget.ProgressBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Artists#newInstance} factory method to
+ * Use the {@link Progress#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Artists extends Fragment {
+public class Progress extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +24,9 @@ public class Artists extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Artists() {
+    static ProgressBar progressBar;
+
+    public Progress() {
         // Required empty public constructor
     }
 
@@ -37,11 +36,11 @@ public class Artists extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Artists.
+     * @return A new instance of fragment Progress.
      */
     // TODO: Rename and change types and number of parameters
-    public static Artists newInstance(String param1, String param2) {
-        Artists fragment = new Artists();
+    public static Progress newInstance(String param1, String param2) {
+        Progress fragment = new Progress();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,11 +61,12 @@ public class Artists extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_artists, container, false);
-        RecyclerView rcview = view.findViewById(R.id.rc_artists);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
-        ArtistAdapter sa = new ArtistAdapter(view.getContext(), MainActivity.library.getArtists());
-        rcview.setAdapter(sa);
+        View view = inflater.inflate(R.layout.fragment_progress, container, false);
+        progressBar = view.findViewById(R.id.progressBar);
         return view;
+    }
+
+    public static void updateProgress(int pos, int n) {
+        progressBar.setProgress(pos/n);
     }
 }

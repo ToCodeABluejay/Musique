@@ -17,12 +17,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class SongAdapter extends RecyclerView.Adapter<SongAdapter.Holder> {
     Context context;
-    ArrayList<Song> songs;
+    static ArrayList<Song> songs;
+    private final Interface inter;
 
 
-    SongAdapter(Context context, ArrayList<Song> songs) {
+    SongAdapter(Context context, ArrayList<Song> songs, Interface inter) {
         this.context = context;
         this.songs = songs;
+        this.inter = inter;
     }
 
     @NonNull
@@ -35,7 +37,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(@NonNull SongAdapter.Holder holder, int position) {
-        holder.name.setText(songs.get(position).getName());
+        //holder.name.setText(songs.get(position).getName());
     }
 
     @Override
@@ -52,6 +54,13 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.Holder> {
 
             cover = itemView.findViewById(R.id.song_cover);
             name = itemView.findViewById(R.id.song_name);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    MainActivity.playSong(songs, 0);
+                }
+            });
         }
     }
 }

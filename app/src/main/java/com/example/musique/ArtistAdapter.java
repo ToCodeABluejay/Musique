@@ -15,10 +15,10 @@ import java.util.HashMap;
 
 public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.Holder> {
     Context context;
-    ArrayList<Artist> artists;
+    HashMap<String, Artist> artists;
 
 
-    ArtistAdapter(Context context, ArrayList<Artist> artists) {
+    ArtistAdapter(Context context, HashMap<String, Artist> artists) {
         this.context = context;
         this.artists = artists;
     }
@@ -33,7 +33,8 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(@NonNull ArtistAdapter.Holder holder, int position) {
-        holder.name.setText(artists.get(position).getName());
+        Object k = artists.keySet().toArray()[position];
+        holder.name.setText(artists.get(k).getName());
     }
 
     @Override

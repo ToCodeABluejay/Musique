@@ -10,14 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.Holder> {
     Context context;
-    ArrayList<Album> albums;
+    HashMap<String, Album> albums;
 
 
-    AlbumAdapter(Context context, ArrayList<Album> albums) {
+    AlbumAdapter(Context context, HashMap<String, Album> albums) {
         this.context = context;
         this.albums = albums;
     }
@@ -32,7 +32,8 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(@NonNull AlbumAdapter.Holder holder, int position) {
-        holder.name.setText(albums.get(position).getName());
+        Object k = albums.keySet().toArray()[position];
+        holder.name.setText(albums.get(k).getName());
     }
 
     @Override

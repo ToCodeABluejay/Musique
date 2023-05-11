@@ -10,11 +10,12 @@ import android.content.ContentUris;
 
 public class Library {
     HashMap<String, Artist> artists;
-    ArrayList<Artist> artists_l;
+    //ArrayList<Artist> artists_l;
     HashMap<String, Album> albums;
-    ArrayList<Album> albums_l;
+    //ArrayList<Album> albums_l;
     ArrayList<Song> songs;
     Song current;
+    int count;
 
     Library(Activity activity) {
         Uri allsongsuri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
@@ -24,6 +25,7 @@ public class Library {
         this.albums = new HashMap<String, Album>();
         this.songs = new ArrayList<Song>();
 
+        count = cursor.getCount();
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {
@@ -46,7 +48,7 @@ public class Library {
                         k.add(s);
                         a = new Album(s.getAlbum(), k);
                         albums.put(s.getAlbum(), (a=new Album(s.getAlbum(), k)));
-                        albums_l.add(a);
+                        //albums_l.add(a);
                     }
                     else {
                         a.songs.add(s);
@@ -55,22 +57,24 @@ public class Library {
                         ArrayList<Album> k = new ArrayList<Album>();
                         k.add(a);
                         artists.put(s.getArtist(), (b=new Artist(s.getArtist(), k)));
-                        artists_l.add(b);
+                        //artists_l.add(b);
                     }
                     else if (!b.albums.contains(a)) {
                         b.albums.add(a);
                     }
+                    Progress.updateProgress(cursor.getPosition(), count);
                 } while (cursor.moveToNext());
             }
             cursor.close();
         }
+        MainActivity.initPlayer();
     }
-    public ArrayList<Artist> getArtists() {
-        return artists_l;
+    public HashMap<String, Artist> getArtists() {
+        return artists;
     }
 
-    public ArrayList<Album> getAlbums() {
-        return albums_l;
+    public HashMap<String, Album> getAlbums() {
+        return albums;
     }
 
     public ArrayList<Song> getSongs() {

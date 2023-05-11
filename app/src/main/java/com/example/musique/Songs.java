@@ -1,7 +1,7 @@
 package com.example.musique;
 
 import android.os.Bundle;
-
+import java.util.ArrayList;
 import androidx.fragment.app.Fragment;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,7 +17,7 @@ import android.view.ViewGroup;
  * Use the {@link Songs#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Songs extends Fragment {
+public class Songs extends Fragment implements Interface {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,8 +66,13 @@ public class Songs extends Fragment {
         View view = inflater.inflate(R.layout.fragment_songs, container, false);
         RecyclerView rcview = view.findViewById(R.id.rc_songs);
         LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
-        SongAdapter sa = new SongAdapter(view.getContext(), MainActivity.library.getSongs());
+        SongAdapter sa = new SongAdapter(view.getContext(), MainActivity.library.getSongs(), this);
         rcview.setAdapter(sa);
         return view;
+    }
+
+    @Override
+    public void onClick(int position) {
+
     }
 }
