@@ -1,10 +1,11 @@
 package com.example.musique;
 
 import android.os.Bundle;
-import android.R.drawable;
 import androidx.fragment.app.Fragment;
 import android.widget.Button;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ public class Player extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    static ImageView cover;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -64,6 +67,7 @@ public class Player extends Fragment {
         FloatingActionButton play;
         Button prev, next;
         play = view.findViewById(R.id.play);
+        this.cover = view.findViewById(R.id.p_cover);
         play.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v) {

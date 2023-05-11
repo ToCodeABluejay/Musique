@@ -29,7 +29,7 @@
     - [x] Pause/play
         - [x] Play media
         - [] Set player TextViews
-        - [] Set player ImageView
+        - [x] Set player ImageView
     - [] Next
     - [] Previous
 

@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements Interface {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Player.cover.setImageURI(songs.get(position).getCover());
     }
 
     public static void playButton() {

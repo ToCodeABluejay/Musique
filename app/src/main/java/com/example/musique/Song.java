@@ -28,6 +28,10 @@ public class Song implements Parcelable {
         return artist;
     }
 
+    public Uri getCover() {
+        return cover;
+    }
+
     public String getAlbum() {
         return album;
     }
